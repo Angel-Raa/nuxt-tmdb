@@ -1,5 +1,5 @@
 <template>
-  <section class="home">
+  <section class="">
     <Hero />
     <Search />
     <Loading />
@@ -10,6 +10,8 @@
       :voteAverage="movie.vote_average"
       :porterPath="movie.poster_path"
       :originalTitle="movie.original_title"
+      :releaseDate="movie.release_date"
+      :id="movie.id"
     />
   </section>
 </template>
@@ -19,7 +21,7 @@ const config = useRuntimeConfig();
 const minDate = ref("");
 const maxDate = ref("");
 const url = new URL(
-  `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`
+  `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}'`
 );
 
 const input: Ref<string> = ref("");
@@ -33,22 +35,18 @@ const movies: Ref<Movies> = ref({
 const getMovies = async () => {
   try {
     const response = await fetch(url, {
-      headers:{
-        Authorization:`Bearer ${config.apiToken}`,
-        Accept: 'application/json',
-      }
+      headers: {
+        Authorization: `Bearer ${config.apiToken}`,
+        Accept: "application/json",
+      },
     });
-
     if (!response.ok) {
       throw new Error(`Failed to fetch movies: ${response.statusText}`);
     }
     const data = await response.json();
-    movies.value = data as Movies; // Type assertion for clarity
-    console.log(movies)
-    console.log(movies);
+    movies.value = data as Movies;
   } catch (error: any) {
     console.error("Error fetching movies:", error);
-    // Handle errors appropriately (e.g., display an error message to the user)
   }
 };
 
@@ -61,6 +59,6 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
-@import url("~/assets/css/main.css");
+<style scoped >
+
 </style>

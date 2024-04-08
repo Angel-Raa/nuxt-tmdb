@@ -1,9 +1,34 @@
 <template>
-  <section class="container movies">
-    <div id="movie-grid" class="movie-grid">
-      <div class="movie">
-        <div class="movie-img">
-          <img :src="`https://image.tmdb.org/t/p/w500/${porterPath}`" :alt="originalTitle"  loading="lazy"/>
+  <section class="">
+    <div class="">
+      <div class="">
+        <div class="">
+          <img
+            :src="`https://image.tmdb.org/t/p/w500/${porterPath}`"
+            :alt="originalTitle"
+            loading="lazy"
+          />
+        </div>
+        <p class="">{{ voteAverage }}</p>
+        <p class="">{{ overview }}</p>
+
+        <div class="">
+          <p class="">
+            {{ originalTitle }}
+          </p>
+          <p class="release">
+            Released:
+            {{
+              releaseDate.toLocaleString("en-us", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })
+            }}
+          </p>
+          <NuxtLink class="" :to="`/movies/${id}`">
+            Get More Info
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -16,9 +41,10 @@ defineProps<{
   voteAverage: number;
   porterPath: string;
   originalTitle: string;
+  releaseDate: Date;
+  id: number;
 }>();
 </script>
-
 <style>
-@import url("~/assets/css/main.css");
+
 </style>

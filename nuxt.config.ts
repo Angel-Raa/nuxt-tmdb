@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
+
   app: {
     head: {
       title: "Movie Explorer",
@@ -17,8 +18,11 @@ export default defineNuxtConfig({
     },
     layoutTransition: { name: "layout", mode: "out-in" },
   },
+
   runtimeConfig: {
     apiKey: process.env.API_KEY,
     apiToken: process.env.TOKEN,
   },
+
+  modules: ["@nuxtjs/tailwindcss"],
 });
