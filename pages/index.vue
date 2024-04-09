@@ -2,8 +2,7 @@
   <section>
     <Hero />
     <Search class="mt-4" />
-    <Loading />
-    <section v-for="movie of movies" :key="movie.id">
+    <section v-for="movie of movies" :key="movie.id" >
       <Movies
         :overview="movie.overview"
         :voteAverage="movie.vote_average"
@@ -20,16 +19,9 @@
 
 <script lang="ts" setup>
 import { useSearch } from "~/composables/search";
-const minDate = ref("");
-const maxDate = ref("");
 const { movies } = useSearch();
 
-onMounted(async () => {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  minDate.value = `${year}-01-01`; // 1 de enero del año actual
-  maxDate.value = `${year}-12-31`; // 31 de diciembre del año actual
-});
+
 </script>
 
 <style scoped></style>

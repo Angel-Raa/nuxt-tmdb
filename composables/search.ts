@@ -2,6 +2,7 @@ export const useSearch = () => {
   // Define minDate y maxDate como variables reactivas
   const minDate = ref("");
   const maxDate = ref("");
+  const pending: Ref<boolean> = ref(false);
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -17,9 +18,8 @@ export const useSearch = () => {
   // Función para buscar películas
   const search = async (values: string) => {
     try {
-      if (input.value.trim() === "") {
+      if (values === "") {
         await store.getMovies(url.value);
-        
       } else {
         // Si hay texto en el input, buscar películas según el texto
         url.value.searchParams.set("query", values);
@@ -29,6 +29,8 @@ export const useSearch = () => {
       console.error("Error fetching movies:", error);
     }
   };
+
+  
 
   // Watcher para buscar películas cuando el valor del input cambia
   watch(
@@ -46,9 +48,8 @@ export const useSearch = () => {
     search,
     input,
     movies: computed(() => store.movies.results),
-    pages:computed(()=>store.movies.page),
-    totalResults:computed(() => store.movies.total_results),
-    totalPages:computed(() => store.movies.total_pages)
-  
+    pages: computed(() => store.movies.page),
+    totalResults: computed(() => store.movies.total_results),
+    totalPages: computed(() => store.movies.total_pages),
   };
 };

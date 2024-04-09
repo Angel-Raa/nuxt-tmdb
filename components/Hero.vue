@@ -12,7 +12,7 @@
         <span class="text-yellow-400">Now</span> Streaming
       </h2>
       <NuxtLink
-        to="/about"
+        to="/"
         class="mt-4 inline-block px-6 py-3 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500 transition-colors duration-300"
         >View Movies</NuxtLink
       >

@@ -16,11 +16,11 @@ export default defineNuxtConfig({
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/movie.ico" }],
     },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: "page", mode: "out-in" },
   },
 
   runtimeConfig: {
-    apiKey: process.env.API_KEY,
+    apiKey: process.env.KEY,
     apiToken: process.env.TOKEN,
   },
 
