@@ -46,6 +46,9 @@ export const useSearch = () => {
     search,
     input,
     movies: computed(() => store.movies.results),
-   
+    pages:computed(()=>store.movies.page),
+    totalResults:computed(() => store.movies.total_results),
+    totalPages:computed(() => store.movies.total_pages)
+  
   };
 };

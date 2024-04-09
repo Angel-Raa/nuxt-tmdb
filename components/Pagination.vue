@@ -98,6 +98,9 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const {totalPages, pages, totalResults } = useSearch()
+
+</script>
 
 <style></style>
