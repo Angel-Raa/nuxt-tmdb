@@ -24,5 +24,5 @@ export default defineNuxtConfig({
     apiToken: process.env.TOKEN,
   },
 
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
 });
