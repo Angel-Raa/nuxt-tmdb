@@ -1,4 +1,6 @@
 export const useSearch = () => {
+  const config = useRuntimeConfig()
+  const api = config.apiKey;
   // Define minDate y maxDate como variables reactivas
   const minDate = ref("");
   const maxDate = ref("");

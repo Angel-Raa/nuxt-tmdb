@@ -20,9 +20,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    apiKey: process.env.KEY,
-    apiToken: process.env.TOKEN,
+    apiKey: process.env.API_TOKEN,
+    apiToken: process.env.API_KEY,
+
+    public: {
+      BASE_URL: "https://api.themoviedb.org/3/discover/movie",
+    },
   },
 
-  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image"],
 });

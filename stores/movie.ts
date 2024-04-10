@@ -1,15 +1,35 @@
 import { defineStore } from "pinia";
 
 export const useMovieStore = defineStore("movie", () => {
-  const config = useRuntimeConfig();
   const pending: Ref<boolean> = ref(false);
-  const movie: Ref<Movies> = ref({
-    dates: { maximum: new Date(), minimum: new Date() },
-    page: 0,
-    results: [],
-    total_pages: 0,
-    total_results: 0,
+  const details: Ref<Details> = ref({
+    adult: false,
+    backdrop_path: '',
+    belongs_to_collection: null,
+    budget: 0,
+    genres: [],
+    homepage: '',
+    id: 0,
+    imdb_id: '',
+    original_language: '',
+    original_title: '',
+    overview: '',
+    popularity: 0,
+    poster_path: '',
+    production_companies: [],
+    production_countries: [],
+    release_date: new Date(),
+    revenue: 0,
+    runtime: 0,
+    spoken_languages: [],
+    status: '',
+    tagline: '',
+    title: '',
+    video: false,
+    vote_average: 0,
+    vote_count: 0,
   });
+  
 
   const movies: Ref<Movies> = ref({
     dates: { maximum: new Date(), minimum: new Date() },
@@ -23,7 +43,6 @@ export const useMovieStore = defineStore("movie", () => {
     try {
       const response = await fetch(url, {
         headers: {
-          Authorization: `Bearer ${config.apiToken}`,
           Accept: "application/json",
         },
       });
@@ -49,19 +68,19 @@ export const useMovieStore = defineStore("movie", () => {
       .finally(() => (pending.value = false));
   };
 
-  const getMovieById = async (movieId: number) => {
+  const getMovieById = async (movieId: string | number) => {
     pending.value = true;
     await fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
       {
         headers: {
-          Authorization: `Bearer ${config.apiToken}`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzFkODBiNjQ5NWQ3ZmQwZWQ2MTdjMzI2MzdlMDk1ZiIsInN1YiI6IjY2MTM0OGM1OTQwOGVjMDE2MzJhMmE3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JY7JepRVeXPq8DqzPSm6UgyMt0zwq098ID33jGKMLS0`,
           Accept: "application/json",
         },
       }
     )
       .then((res) => res.json())
-      .then((res) => (movie.value = res))
+      .then((res) => (details.value = res))
       .then((res) => console.log(res))
       .catch((err) => console.log(err))
       .finally(() => (pending.value = false));
@@ -72,7 +91,7 @@ export const useMovieStore = defineStore("movie", () => {
     searchMovies,
     getMovieById,
     movies,
-    movie,
+    details,
     pending,
   };
 });
