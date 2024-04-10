@@ -1,6 +1,9 @@
 <template>
   <section>
     <LazyDetailsMovie :details="store.details" />
+    <div class="flex justify-center  mt-4">
+      <NuxtLink to="/" class="">Back to Home</NuxtLink>
+    </div>
   </section>
 </template>
 
@@ -10,5 +13,6 @@ const store = useMovieStore();
 
 onMounted(async () => {
   await store.getMovieById(id.value);
+  await store.getCredits(id.value);
 });
 </script>
