@@ -42,77 +42,24 @@ export const useMovieStore = defineStore("movie", () => {
     total_results: 0,
   });
 
-  const getMovies = async (url: URL) => {
-    try {
-      const response = await fetch(url, {
-        headers: {
-          Accept: "application/json",
-        },
-      });
-      if (!response.ok) {
-        throw new Error(`Failed to fetch movies: ${response.statusText}`);
-      }
-      const data = await response.json();
-      movies.value = data as Movies;
-    } catch (error: any) {
-      console.error("Error fetching movies:", error);
-    }
+  const getMovies = async () => {
+    const res = await $fetch<Movies>("/api/movies/movie");
+    movies.value = res;
   };
 
-  const searchMovies = async (input: string | URL) => {
-    pending.value = true;
-    await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=bc1d80b6495d7fd0ed617c32637e095f&language=en-US&page=1&query=${input}`
-    )
-      .then((res) => res.json())
-      .then((res) => (movies.value = res))
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
-      .finally(() => (pending.value = false));
+  const searchMovies = async (input: string) => {
+    const res = await $fetch<Movies>(`/api/movies/search/${input.trim}`);
+    movies.value = res;
   };
 
   const getMovieById = async (movieId: string | number) => {
-    pending.value = true;
-    await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
-      {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzFkODBiNjQ5NWQ3ZmQwZWQ2MTdjMzI2MzdlMDk1ZiIsInN1YiI6IjY2MTM0OGM1OTQwOGVjMDE2MzJhMmE3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JY7JepRVeXPq8DqzPSm6UgyMt0zwq098ID33jGKMLS0`,
-          Accept: "application/json",
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => (details.value = res))
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
-      .finally(() => (pending.value = false));
+    const res = await $fetch<Details>(`/api/${movieId}`);
+    details.value = res;
   };
 
   const getCredits = async (movieId: string | number) => {
-    pending.value = true;
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
-      {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYzFkODBiNjQ5NWQ3ZmQwZWQ2MTdjMzI2MzdlMDk1ZiIsInN1YiI6IjY2MTM0OGM1OTQwOGVjMDE2MzJhMmE3ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JY7JepRVeXPq8DqzPSm6UgyMt0zwq098ID33jGKMLS0`,
-          Accept: "application/json",
-        },
-      }
-    );
-
-    try {
-      if (res.ok) {
-        const data = await res.json();
-        credits.value = data;
-      } else {
-        throw new Error("Los datos recibidos no son válidos.");
-      }
-    } catch (error: any) {
-      console.error("Error al obtener los datos:", error);
-    } finally {
-      pending.value = false;
-    }
+    const res = await $fetch<Credits>(`/api/movies/credits/${movieId}`);
+    credits.value = res;
   };
 
   return {

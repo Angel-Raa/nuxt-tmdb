@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     apiToken: process.env.API_KEY,
 
     public: {
-      BASE_URL: "https://api.themoviedb.org/3/discover/movie",
+      apiBase: process.env.PUBLIC_API_BASE
     },
   },
 

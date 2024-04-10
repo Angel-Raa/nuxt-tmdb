@@ -6,9 +6,7 @@
         :alt="details.title"
         class="w-full h-auto object-cover rounded-lg shadow-md"
       />
-      <Credit 
-      :id="details.id"
-      />
+      <Credit :id="details.id" />
     </div>
     <div class="w-full md:w-1/2 lg:w-2/5 p-4 flex flex-col justify-between">
       <div>
@@ -48,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import {TMDB_IMAGE_BASE} from "@/constants/images"
+import { TMDB_IMAGE_BASE } from "@/constants/images";
 import Countries from "./Countries.vue";
 import Genres from "./Genres.vue";
 import Info from "./Info.vue";

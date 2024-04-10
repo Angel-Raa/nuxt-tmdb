@@ -14,20 +14,13 @@
 </template>
 
 <script lang="ts" setup>
+import { formatRevenue } from "@/composables/standardization";
 defineProps<{
   title: string;
   tagline: string;
   released: Date;
   revenue: number;
 }>();
-
-const formatRevenue = (revenue: number) => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  }).format(revenue);
-};
-
 </script>
 
 <style></style>

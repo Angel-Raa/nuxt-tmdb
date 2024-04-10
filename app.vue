@@ -15,4 +15,14 @@
   opacity: 0;
   filter: blur(1rem);
 }
+
+html,
+body,
+#__nuxt {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  color: black;
+  color-scheme: white;
+}
 </style>

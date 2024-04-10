@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts" setup>
-import {TMDB_IMAGE_BASE} from "@/constants/images"
+import { TMDB_IMAGE_BASE } from "@/constants/images";
 defineProps<{
   runtime: number;
   overview: string;
