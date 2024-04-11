@@ -3,7 +3,7 @@
     class="hero min-h-screen from-gray-800 to-gray-600 px-4 py-16 flex flex-col items-center justify-center"
   >
     <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text animate__infinite animate__pulse">
-      Welcome to Explore
+      TMDb Explorer
     </h1>
     <Search class="mt-10" />
     <Movies class="mt-4 mb-12" />

@@ -7,6 +7,8 @@ export default defineNuxtConfig({
     head: {
       title: "Nuxt Movies",
       htmlAttrs: { lang: "en" },
+     
+
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -14,7 +16,7 @@ export default defineNuxtConfig({
         { name: "keywords", content: "Nuxt " },
         { name: "author", content: "Angel Aguero" },
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/movie.ico" }],
+     
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
