@@ -47,9 +47,11 @@ export const useMovieStore = defineStore("movie", () => {
     movies.value = res;
   };
 
-  const searchMovies = async (input: string) => {
-    const res = await $fetch<Movies>(`/api/movies/search/${input.trim}`);
+  const searchMovies = async (id: string) => {
+    const res = await $fetch<Movies>(`/api/movies/${id}`);
     movies.value = res;
+
+
   };
 
   const getMovieById = async (movieId: string | number) => {

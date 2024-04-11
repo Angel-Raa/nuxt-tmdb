@@ -27,6 +27,7 @@ export default defineNuxtConfig({
       apiBase: process.env.PUBLIC_API_BASE
     },
   },
+  
 
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image"],
 });

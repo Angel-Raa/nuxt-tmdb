@@ -13,7 +13,7 @@
         :fallback="'/fallback-image.jpg'"
       />
       <div class="flex items-center justify-between mt-4">
-        <p class="text-lg font-semibold">{{ movie.vote_average }}</p>
+        <p class="text-lg font-semibold"> {{ movie.vote_average }}</p>
         <NuxtLink
           class="text-blue-500 hover:underline"
           :to="`/movies/${movie.id}`"
@@ -42,4 +42,5 @@
 import { useSearch } from "~/composables/search";
 import { TMDB_IMAGE_BASE } from "@/constants/images";
 const { movies } = useSearch();
+
 </script>

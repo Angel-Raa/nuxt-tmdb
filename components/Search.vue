@@ -35,6 +35,7 @@
       />
       <button
         v-show="input !== ''"
+        @click="search(input)"
         class="absolute inset-y-0 right-0 flex items-center px-4 bg-blue-700 text-white rounded-lg text-sm hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
       >
         Search
@@ -44,8 +45,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useSearch } from "~/composables/search";
-const { input } = useSearch();
+const { input, search } = useSearch();
+
 useHead({
   title: computed(() => `Explorer ${input.value}`),
 });
