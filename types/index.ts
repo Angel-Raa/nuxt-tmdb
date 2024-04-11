@@ -24,7 +24,7 @@ declare global {
     overview: string;
     popularity: number;
     poster_path: string;
-    release_date: Date;
+    release_date: Date | string;
     title: string;
     video: boolean;
     vote_average: number;
@@ -53,7 +53,7 @@ declare global {
     poster_path: string;
     production_companies: ProductionCompany[];
     production_countries: ProductionCountry[];
-    release_date: Date;
+    release_date: Date | string;
     revenue: number;
     runtime: number;
     spoken_languages: SpokenLanguage[];

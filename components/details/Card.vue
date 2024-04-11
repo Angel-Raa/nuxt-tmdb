@@ -5,7 +5,7 @@
       Tagline: <span class="font-medium">{{ tagline }}</span>
     </p>
     <p class="text-base mb-2">
-      Released: <span class="font-medium">{{ released }}</span>
+      Released: <span class="font-medium">{{ new Date(released) }}</span>
     </p>
     <p class="text-base mb-2" v-if="revenue > 0">
       Revenue: <span class="font-medium">{{ formatRevenue(revenue) }}</span>
@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import { formatRevenue } from "@/composables/standardization";
+import { formatRevenue, formatDate } from "@/composables/standardization";
 defineProps<{
   title: string;
   tagline: string;
-  released: Date;
+  released: Date |string;
   revenue: number;
 }>();
 </script>

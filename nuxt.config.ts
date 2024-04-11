@@ -5,12 +5,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "Movie Explorer",
+      title: "Nuxt Movies",
       htmlAttrs: { lang: "en" },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "description", content: "Movie Explorer" },
+        { name: "description", content: "Nuxt Movies" },
         { name: "keywords", content: "Nuxt " },
         { name: "author", content: "Angel Aguero" },
       ],
@@ -24,10 +24,9 @@ export default defineNuxtConfig({
     apiToken: process.env.API_KEY,
 
     public: {
-      apiBase: process.env.PUBLIC_API_BASE
+      apiBase: process.env.PUBLIC_API_BASE,
     },
   },
-  
 
   modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt", "@nuxt/image"],
 });

@@ -48,6 +48,6 @@
 const { input, search } = useSearch();
 
 useHead({
-  title: computed(() => `Explorer ${input.value}`),
+  title: computed(() => `Explorar ${input.value}`),
 });
 </script>

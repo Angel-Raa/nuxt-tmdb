@@ -1,7 +1,10 @@
 export const useSearch = () => {
   const input = ref("");
+  const loading = ref(false);
   const store = useMovieStore();
   const search = async (values: string) => {
+    loading.value = true;
+
     try {
       if (values === "") {
         await store.getMovies();
@@ -10,6 +13,8 @@ export const useSearch = () => {
       }
     } catch (error: any) {
       console.error("Error fetching movies:", error);
+    }finally {
+      loading.value = false;
     }
   };
 
@@ -24,6 +29,7 @@ export const useSearch = () => {
   });
 
   return {
+    loading,
     search,
     input,
     movies: computed(() => store.movies.results),

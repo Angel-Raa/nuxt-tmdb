@@ -1,7 +1,7 @@
 <template>
   <section class="relative h-screen flex items-center justify-center">
-    <img
-      src="~/assets/img/hero.jpg"
+    <NuxtImg
+      src="/hero.jpg"
       alt="image de fondo"
       loading="lazy"
       class="absolute inset-0 w-full h-full object-cover"
@@ -20,4 +20,5 @@
   </section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>
