@@ -18,9 +18,11 @@ export const useSearch = () => {
     }
   };
 
+ 
+
   watch(input, async (newValue, oldValue) => {
     if (newValue !== oldValue) {
-      await search(newValue);
+      await search(newValue)
     }
   });
 
@@ -33,8 +35,5 @@ export const useSearch = () => {
     search,
     input,
     movies: computed(() => store.movies.results),
-    pages: computed(() => store.movies.page),
-    totalResults: computed(() => store.movies.total_results),
-    totalPages: computed(() => store.movies.total_pages),
   };
 };

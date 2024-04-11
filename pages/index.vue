@@ -3,8 +3,7 @@
     <Hero />
     <Search class="mt-10" />
     <Movies class="mt-4 mb-12" />
-    <!-- TODO agregar páginas <Pagination class="flex justify-center m-12" />  -->
-    <IFooter class="flex justify-center m-32 h-16 items-center" />
+    <IFooter class="flex justify-center mt-32 h-16 items-center" />
   </section>
 </template>
 

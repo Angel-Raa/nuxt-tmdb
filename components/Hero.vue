@@ -1,9 +1,8 @@
 <template>
   <section class="relative h-screen flex items-center justify-center">
     <NuxtImg
-      src="/hero.jpg"
-      alt="image de fondo"
-      loading="lazy"
+      src="/hero-min.jpg"
+      alt="`fondo"
       class="absolute inset-0 w-full h-full object-cover"
     />
     <article class="text-container text-center text-white z-10">
@@ -21,4 +20,6 @@
 </template>
 
 <script lang="ts" setup>
+import { TMDB_IMAGE_BASE, TMDB_IMAGE } from "@/constants/images";
+
 </script>
